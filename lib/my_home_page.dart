@@ -17,7 +17,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Home Page'),
-            Icon(Icons.notification_add),
+            SizedBox(
+              width: 120,
+            ),
+            ElevatedButton(
+              onPressed: null,
+              child: Icon(Icons.notification_add, color: Colors.white),
+            ),
             Icon(Icons.settings),
           ],
         ),
