@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_flutter_project/my_home_page.dart';
+import 'package:new_flutter_project/screen/my_home_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,11 +16,15 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My First App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
+        title: 'My First App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(),
+        initialRoute: '/',
+        routes: {
+          '/settings': (context) => Settings(),
+          '/profile': (context) => Profiles(),
+        });
   }
 }
