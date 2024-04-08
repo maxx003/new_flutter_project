@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_flutter_project/screen/my_home_page.dart';
+import 'package:new_flutter_project/screen/settings.dart';
+import 'package:new_flutter_project/screen/profile.dart';
 
 void main() {
   runApp(const MainApp());
@@ -24,7 +26,7 @@ class _MainAppState extends State<MainApp> {
         initialRoute: '/',
         routes: {
           '/settings': (context) => Settings(),
-          '/profile': (context) => Profiles(),
+          '/profile': (context) => Profile(),
         });
   }
 }

@@ -12,12 +12,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     List<String> imageList = [
-      'assets/images/cat.jpg',
-      'assets/images/city.png',
-      'assets/images/iceland.jpg'
+      'assets/images/autumn.jpg',
+      'assets/images/falltree.jpg',
+      'assets/images/flowers.jpg',
+      'assets/images/tree.jpg',
+      'assets/images/squirrel.jpg',
+      'assets/images/winter.webp'
     ];
 
-    List<String> imageTitle = ['Cat', 'City', 'Iceland'];
+    List<String> imageTitle = [
+      'Autumn',
+      'Fall',
+      'Flower',
+      'Tree',
+      'Squirrel',
+      'Pinecone'
+    ];
 
     double Width = MediaQuery.of(context).size.width;
     double Height = MediaQuery.of(context).size.height;
