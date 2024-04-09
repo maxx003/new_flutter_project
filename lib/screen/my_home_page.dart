@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -15,24 +14,24 @@ class _MyHomePageState extends State<MyHomePage> {
       'assets/images/autumn.jpg',
       'assets/images/falltree.jpg',
       'assets/images/flowers.jpg',
-      'assets/images/tree.jpg',
       'assets/images/squirrel.jpg',
-      'assets/images/winter.webp'
+      'assets/images/winter.webp',
+      'assets/images/tree.jpg'
     ];
 
     List<String> imageTitle = [
       'Autumn',
-      'Fall',
-      'Flower',
       'Tree',
+      'Flower',
       'Squirrel',
-      'Pinecone'
+      'Pinecone',
+      'River'
     ];
 
     double Width = MediaQuery.of(context).size.width;
     double Height = MediaQuery.of(context).size.height;
 
-    List<Widget> gridStuff = List.generate(3, (index) {
+    List<Widget> gridStuff = List.generate(6, (index) {
       return Container(
         width: Width,
         height: Height,
@@ -65,8 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 213, 117, 110),
-        title: const Row(
+        backgroundColor: Color.fromARGB(255, 236, 137, 81),
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
@@ -76,18 +75,60 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: 100,
             ),
-            ElevatedButton(
-              onPressed: null,
+            TextButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Alert'),
+                        content: Text('This is an alert dialog.'),
+                        actions: [
+                          TextButton(
+                            child: Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
               child: Icon(Icons.notification_add, color: Colors.white),
             ),
             Icon(Icons.settings),
           ],
         ),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+          child: ListView(
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Settings'),
+            onTap: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Profile'),
+            onTap: () {
+              Navigator.pushNamed(context, '/profile');
+            },
+          ),
+        ],
+      )),
       body: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 41, 76, 99),
+          color: Color.fromARGB(255, 239, 166, 65),
         ),
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -103,25 +144,40 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }),
       ),
-      bottomNavigationBar:
-          BottomNavigationBar(showUnselectedLabels: true, items: const [
-        BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 173, 65, 239),
-            icon: Icon(Icons.home),
-            label: 'Home'),
-        BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 190, 78, 218),
-            icon: Icon(Icons.search),
-            label: 'Search'),
-        BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 197, 66, 229),
-            icon: Icon(Icons.settings),
-            label: 'Settings'),
-        BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 120, 44, 132),
-            icon: Icon(Icons.person),
-            label: 'Profile'),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          showUnselectedLabels: true,
+          currentIndex: 0,
+          items: const [
+            BottomNavigationBarItem(
+                backgroundColor: Color.fromARGB(255, 239, 166, 65),
+                icon: Icon(Icons.home),
+                label: 'Home'),
+            BottomNavigationBarItem(
+                backgroundColor: Color.fromARGB(255, 239, 166, 65),
+                icon: Icon(Icons.search),
+                label: 'Search'),
+            BottomNavigationBarItem(
+                backgroundColor: Color.fromARGB(255, 239, 166, 65),
+                icon: Icon(Icons.settings),
+                label: 'Settings'),
+            BottomNavigationBarItem(
+                backgroundColor: Color.fromARGB(255, 239, 166, 65),
+                icon: Icon(Icons.person),
+                label: 'Profile'),
+          ],
+          onTap: (int index) {
+            switch (index) {
+              case 0:
+                Navigator.pushNamed(context, '/');
+                break;
+              case 2:
+                Navigator.pushNamed(context, '/settings');
+                break;
+              case 3:
+                Navigator.pushNamed(context, '/profile');
+                break;
+            }
+          }),
     );
   }
 }
